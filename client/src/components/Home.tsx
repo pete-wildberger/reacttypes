@@ -5,6 +5,7 @@ import * as React from 'react';
 interface IHomeState {
   userName: string;
   password: string;
+  boxes: Array<any>;
 }
 
 class Home extends React.Component<IHomeState> {
@@ -14,15 +15,20 @@ class Home extends React.Component<IHomeState> {
       userName: '',
       password: ''
     };
-    // this.handleUserNameChange = this.handleUserNameChange.bind(this);
+    this.handleUserNameChange = this.handleUserNameChange.bind(this);
   }
   // input event handlers
-  // handleUserNameChange = event => {
-  //   this.setState({ userName: event.target.value });
-  // };
+  handleUserNameChange = (event: React.FormEvent<HTMLInputElement>): void => {
+    this.setState({ userName: event.currentTarget.value });
+  };
 
   render() {
-    return <div>Home</div>;
+    return (
+      <div>
+        Home
+        <input onChange={this.handleUserNameChange} />
+      </div>
+    );
   }
 }
 export default Home;

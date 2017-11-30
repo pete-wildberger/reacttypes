@@ -1,20 +1,22 @@
 import * as React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
 import './App.css';
 
-const logo = require('./logo.svg');
+// 404 for people who get lost
+const FourOhFour = () => <h1>Oh no 404</h1>;
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <BrowserRouter>
+        <div className="app">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route component={FourOhFour} />
+          </Switch>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      </BrowserRouter>
     );
   }
 }
